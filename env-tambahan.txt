@@ -1,0 +1,20 @@
+
+# ===== Tempel blok ini di PALING BAWAH file .env =====
+# (baris yang sama di atasnya, mis. APP_NAME, akan tertimpa oleh yang di bawah)
+
+APP_NAME="Tiket Konser"
+APP_LOCALE=id
+APP_TIMEZONE=Asia/Jakarta
+
+# --- Pembayaran ---
+# fake     = tombol "bayar" simulasi, untuk coba-coba tanpa akun Midtrans (hanya jalan di environment non-production)
+# midtrans = pembayaran asli (isi 2 key di bawah, ambil dari dashboard Midtrans > Settings > Access Keys)
+PAYMENT_DRIVER=fake
+MIDTRANS_SERVER_KEY=
+MIDTRANS_CLIENT_KEY=
+MIDTRANS_IS_PRODUCTION=false
+
+# --- Aturan pesanan ---
+ORDER_TTL_MINUTES=15
+MAX_TICKETS_PER_ORDER=4
+MAX_PENDING_ORDERS=2
