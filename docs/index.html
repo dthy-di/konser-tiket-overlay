@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020617">
+  <title>Tiket Konser | Temukan Konser Favoritmu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #020617;
+      color: #f8fafc;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+    header { border-bottom: 1px solid #1e293b; }
+    .nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .brand { color: #e879f9; font-weight: 900; font-size: 20px; }
+    .nav-label { color: #cbd5e1; font-size: 13px; }
+    .hero {
+      margin-top: 42px; padding: clamp(28px, 6vw, 64px);
+      border: 1px solid #ffffff18; border-radius: 28px;
+      background:
+        radial-gradient(ellipse at 90% 10%, #c026d325, transparent 40%),
+        radial-gradient(ellipse at 10% 100%, #4f46e525, transparent 45%),
+        #0f172a;
+      overflow: hidden;
+    }
+    .eyebrow {
+      display: inline-block; padding: 9px 14px;
+      border: 1px solid #e879f944; border-radius: 999px;
+      color: #f0abfc; background: #d946ef12;
+      font-size: 11px; font-weight: 800; letter-spacing: 2px;
+    }
+    h1 {
+      margin-top: 25px; max-width: 760px;
+      font-size: clamp(38px, 7vw, 68px);
+      line-height: 1.08; letter-spacing: -2px;
+    }
+    .gradient {
+      background: linear-gradient(90deg, #f0abfc, #c4b5fd, #818cf8);
+      color: transparent; background-clip: text;
+    }
+    .intro {
+      margin-top: 20px; max-width: 650px;
+      color: #94a3b8; line-height: 1.9; font-size: 15px;
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .pill {
+      border: 1px solid #ffffff18; border-radius: 12px;
+      padding: 12px 15px; background: #ffffff08;
+      color: #cbd5e1; font-size: 13px;
+    }
+    .section-head {
+      margin: 48px 0 20px; display: flex;
+      justify-content: space-between; align-items: end; gap: 15px;
+      flex-wrap: wrap;
+    }
+    .section-label {
+      color: #e879f9; font-size: 11px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    h2 { margin-top: 9px; font-size: clamp(24px, 4vw, 32px); }
+    .muted { color: #94a3b8; font-size: 13px; line-height: 1.8; margin-top: 8px; }
+    .event {
+      display: grid; grid-template-columns: 0.85fr 1.15fr;
+      border: 1px solid #ffffff18; border-radius: 25px;
+      overflow: hidden; background: #0f172a;
+      box-shadow: 0 24px 70px #00000030;
+    }
+    .poster {
+      min-height: 330px; padding: 30px;
+      display: flex; flex-direction: column; justify-content: center;
+      align-items: center; text-align: center;
+      background:
+        radial-gradient(circle at 25% 20%, #f0abfc55, transparent 35%),
+        radial-gradient(circle at 80% 80%, #6366f155, transparent 40%),
+        linear-gradient(145deg, #701a75, #312e81 60%, #0f172a);
+    }
+    .poster-icon { font-size: 72px; filter: drop-shadow(0 8px 20px #0005); }
+    .poster small { margin-top: 20px; letter-spacing: 4px; font-weight: 800; color: #e9d5ff; }
+    .details { padding: clamp(24px, 4vw, 42px); display: flex; flex-direction: column; justify-content: center; }
+    .status {
+      align-self: flex-start; padding: 8px 12px; border-radius: 999px;
+      border: 1px solid #fbbf2440; color: #fcd34d;
+      background: #fbbf2410; font-size: 11px; font-weight: 800;
+    }
+    h3 { font-size: clamp(25px, 4vw, 36px); margin-top: 18px; line-height: 1.2; }
+    .meta { display: grid; gap: 20px; margin-top: 28px; }
+    .meta-item { display: flex; gap: 14px; align-items: flex-start; }
+    .meta-icon {
+      flex: 0 0 42px; height: 42px; border: 1px solid #ffffff18;
+      border-radius: 12px; display: grid; place-items: center;
+      background: #ffffff08; font-size: 19px;
+    }
+    .meta-label { color: #64748b; font-size: 10px; font-weight: 800; letter-spacing: 1.3px; }
+    .meta-value { margin-top: 6px; color: #e2e8f0; font-size: 14px; font-weight: 600; line-height: 1.7; }
+    .ticket-note {
+      margin-top: 28px; padding-top: 22px;
+      border-top: 1px solid #ffffff18;
+    }
+    .ticket-note strong { color: #f0abfc; font-size: 15px; }
+    .ticket-note p { margin-top: 8px; color: #94a3b8; font-size: 12px; line-height: 1.8; }
+    .notice {
+      margin: 24px 0 50px; padding: 20px;
+      border: 1px solid #ffffff12; border-radius: 16px;
+      background: #ffffff05; color: #94a3b8;
+      font-size: 12px; text-align: center; line-height: 1.8;
+    }
+    footer { border-top: 1px solid #1e293b; padding: 25px 0; color: #64748b; font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 700px) {
+      .event { grid-template-columns: 1fr; }
+      .poster { min-height: 230px; }
+      .hero { margin-top: 24px; }
+      h1 { letter-spacing: -1px; }
+      .section-head { margin-top: 35px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="./">🎟 TiketKonser</a>
+      <span class="nav-label">Live Music Experience</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">● LIVE MUSIC EXPERIENCE</span>
+      <h1>Temukan Konser <span class="gradient">Favoritmu.</span></h1>
+      <p class="intro">
+        Pilih acara yang ingin kamu kunjungi, temukan kategori tiket
+        yang sesuai, dan bersiaplah menciptakan momen yang tidak terlupakan.
+      </p>
+      <div class="pills">
+        <span class="pill">🎵 Pengalaman live music</span>
+        <span class="pill">🎫 Tiket digital</span>
+      </div>
+    </section>
+
+    <section class="section-head">
+      <div>
+        <p class="section-label">Explore Events</p>
+        <h2>Konser Mendatang</h2>
+        <p class="muted">Kenali acara pilihanmu sebelum hari konser.</p>
+      </div>
+      <span class="pill">✦ Acara pilihan</span>
+    </section>
+
+    <article class="event">
+      <div class="poster">
+        <div class="poster-icon">🎵</div>
+        <small>LIVE EXPERIENCE</small>
+      </div>
+
+      <div class="details">
+        <span class="status">ⓘ Informasi acara</span>
+        <h3>Nusantara Fest 2026</h3>
+
+        <div class="meta">
+          <div class="meta-item">
+            <div class="meta-icon">📅</div>
+            <div>
+              <p class="meta-label">TANGGAL & WAKTU</p>
+              <p class="meta-value">Sabtu, 12 Desember 2026<br>Pukul 19.00 WIB</p>
+            </div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-icon">📍</div>
+            <div>
+              <p class="meta-label">LOKASI ACARA</p>
+              <p class="meta-value">Stadion Utama<br>Medan</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-note">
+          <strong>Informasi tiket segera hadir</strong>
+          <p>
+            Halaman ini merupakan pratinjau statis. Harga, ketersediaan tiket,
+            pemesanan, dan pembayaran belum terhubung ke sistem transaksi.
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <div class="notice">
+      Ini adalah versi tampilan statis untuk demonstrasi. Fitur login,
+      pemesanan tiket, pembayaran, dan pembaruan data langsung memerlukan
+      server aplikasi.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 TiketKonser</span>
+      <span>Live Music · Digital Ticketing</span>
+    </div>
+  </footer>
+</body>
+</html>
